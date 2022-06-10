@@ -1,0 +1,58 @@
+
+<div class="container mt-3">
+<form [formGroup]="tenderForm" (ngSubmit)="onSubmit()">
+    <div class="card card-primary" >
+        <div class="card-header">
+            <h5 class="card-title" style="margin-top: 10px;">Create Tender</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 cards-row">
+                <label class="control-label" for="contractNo">Contract No</label>
+                <input id="contractNo" formControlName="contractNo" type="text" class="form-control" 
+                [ngClass]="{ 'is-invalid' : tenderForm.get('contractNo')?.errors?.['required'] && tenderForm.get('contractNo')?.touched }"/>
+                <div class="invalid-feedback">Please fill out this field.</div>             
+            </div>
+            <div class="mb-3 cards-row">
+                <label class="control-label" for="tenderName">Tender Name</label>
+                <input id="tenderName" formControlName="tenderName" type="text" class="form-control" 
+                [ngClass]="{ 'is-invalid' : tenderForm.get('tenderName')?.errors?.['required'] && tenderForm.get('tenderName')?.touched }"/>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="mb-3 cards-row">
+                <label class="control-label" for="tenderValue">Tender Value</label>
+                <input id="tenderValue" formControlName="tenderValue" type="number" class="form-control" 
+                [ngClass]="{ 'is-invalid' : tenderForm.get('tenderValue')?.errors?.['required'] && tenderForm.get('tenderValue')?.touched }"/>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="mb-3 cards-row">
+                <label for="releaseDate">Release Date</label>
+                <input id="releaseDate" formControlName="releaseDate" type="text" 
+                bsDatepicker [bsConfig]="datePickerConfigReleaseDate" class="form-control"
+                [ngClass]="{ 'is-invalid' : tenderForm.get('releaseDate')?.errors?.['required'] && tenderForm.get('releaseDate')?.touched }"/>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+    
+            <div class="mb-3 cards-row">
+                <label for="closingDate">Closing Date</label>
+                <input id="closingDate" formControlName="closingDate" type="text" 
+                bsDatepicker [bsConfig]="datePickerConfigClosingDate" class="form-control" 
+                [ngClass]="{ 'is-invalid' : tenderForm.get('closingDate')?.errors?.['required'] && tenderForm.get('closingDate')?.touched }"/>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+       
+            <div class="mb-3 cards-row">
+                <label class="control-label" for="description">Description</label>
+                <textarea style="height:150px" id="description" formControlName="description" type="textarea" class="form-control" 
+                [ngClass]="{ 'is-invalid' : tenderForm.get('description')?.errors?.['required'] && tenderForm.get('description')?.touched }">
+                </textarea> 
+                <div class="invalid-feedback">Please fill out this text area.</div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button style="margin-right:10px ;" class="btn btn-primary" [disabled]="tenderForm.invalid" type="submit">Save</button>
+            <a class="btn btn-secondary" [routerLink]="['/tenderList/']">Back to list</a>
+        </div>
+    </div>
+</form>
+</div>
